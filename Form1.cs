@@ -14,23 +14,19 @@ namespace DataBarang
 
         public void LoadData()
         {
-            BarangContext barangContext = new BarangContext();
+            //BarangContext barangContext = new BarangContext();
             List<Barang> listbarang = barangContext.Read();
             dataProdukView.DataSource = listbarang;
         }
 
         private void tmbBarang_Click(object sender, EventArgs e)
         {
-            TambahBarang tambahBarang = new TambahBarang();
-            Barang barang2 = tambahBarang.GetBarang();
-            if (barangContext.Insert(barang2))
+            using (TambahBarang tmbBarang = new TambahBarang())
             {
-                MessageBox.Show("Barang berhasil ditambahkan");
-                LoadData();
-            }
-            else
-            {
-                MessageBox.Show("Gagal menambahkan data");
+                if (tmbBarang.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                }
             }
         }
     }

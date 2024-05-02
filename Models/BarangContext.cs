@@ -14,8 +14,7 @@ namespace DataBarang.Models
         public List<Barang> Read()
         {
             List<Barang> listbarang = new List<Barang>();
-            string query = @"SELECT nama_barang, harga_barang, jenis_barang FROM Barang";
-
+            string query = @"SELECT * FROM Barang";
             using (NpgsqlConnection conn = new NpgsqlConnection(consStr))
             {
                 conn.Open();
@@ -27,7 +26,7 @@ namespace DataBarang.Models
                         {
                             Barang barang = new Barang();
                             barang.Nama = (string)reader["nama_barang"];
-                            barang.Harga = (int)(reader["harga_barang"]);
+                            barang.Harga = (double)(reader["harga_barang"]);
                             barang.jenisBarang = (string)reader["jenis_barang"];
                             listbarang.Add(barang);
                         }
@@ -40,7 +39,7 @@ namespace DataBarang.Models
         public bool Insert(Barang barang)
         {
             bool isSuccess = false;
-            string query = "INSERT INTO Barang (nama_barang, harga_barang, jenis_barang) VALUES (@Nama, @Harga, @jenisBarang)";
+            string query = "INSERT INTO Barang (nama_barang, harga_barang, jenis_barang) VALUES (@Nama, @Harga, @JenisBarang)";
             using (NpgsqlConnection conn = new NpgsqlConnection(consStr))
             {
                 conn.Open();
@@ -48,7 +47,7 @@ namespace DataBarang.Models
                 {
                     cmd.Parameters.AddWithValue("@Nama", barang.Nama);
                     cmd.Parameters.AddWithValue("@Harga", barang.Harga);
-                    cmd.Parameters.AddWithValue("@jenisBarang", barang.jenisBarang);
+                    cmd.Parameters.AddWithValue("@JenisBarang", barang.jenisBarang);
 
                     int eksekusi = cmd.ExecuteNonQuery();
                     isSuccess = eksekusi > 0;

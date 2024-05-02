@@ -22,15 +22,24 @@ namespace DataBarang
         {
             Barang barang = new Barang();
             barang.Nama = NamaBarang.Text;
-            barang.Harga = int.Parse(HargaBarang.Text);
-            barang.jenisBarang = jenisBarang.Text;
+            barang.Harga = Convert.ToDouble(HargaBarang.Text);
+            barang.jenisBarang = JenisBarang.Text;
             return barang;
         }
 
         private void simpanBarang_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-            Close();
+            Barang barang = GetBarang();
+            BarangContext barangContext = new BarangContext();
+            if (barangContext.Insert(barang))
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Gagal menyimpan data");
+            }
         }
     }
 }

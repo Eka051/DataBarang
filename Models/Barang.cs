@@ -9,7 +9,7 @@ namespace DataBarang.Models
     public class Barang
     {
         public string Nama { get; set; }
-        public int Harga { get; set; }
+        public double Harga { get; set; }
         public string jenisBarang { get; set; }
     }
 }

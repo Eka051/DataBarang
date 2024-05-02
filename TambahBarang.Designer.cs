@@ -31,7 +31,7 @@
             simpanBarang = new Button();
             NamaBarang = new TextBox();
             HargaBarang = new TextBox();
-            jenisBarang = new TextBox();
+            JenisBarang = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -61,13 +61,13 @@
             HargaBarang.Size = new Size(276, 23);
             HargaBarang.TabIndex = 2;
             // 
-            // jenisBarang
+            // JenisBarang
             // 
-            jenisBarang.Location = new Point(268, 288);
-            jenisBarang.Multiline = true;
-            jenisBarang.Name = "jenisBarang";
-            jenisBarang.Size = new Size(276, 23);
-            jenisBarang.TabIndex = 3;
+            JenisBarang.Location = new Point(268, 288);
+            JenisBarang.Multiline = true;
+            JenisBarang.Name = "JenisBarang";
+            JenisBarang.Size = new Size(276, 23);
+            JenisBarang.TabIndex = 3;
             // 
             // label1
             // 
@@ -107,7 +107,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(jenisBarang);
+            Controls.Add(JenisBarang);
             Controls.Add(HargaBarang);
             Controls.Add(NamaBarang);
             Controls.Add(simpanBarang);
@@ -122,7 +122,7 @@
         private Button simpanBarang;
         private TextBox NamaBarang;
         private TextBox HargaBarang;
-        private TextBox jenisBarang;
+        private TextBox JenisBarang;
         private Label label1;
         private Label label2;
         private Label label3;
